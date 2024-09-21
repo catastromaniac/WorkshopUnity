@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour{
     /*
-    MonoBehavior - Ele tem ação no jogo e acesso a recursos;
-    : Significa Herança;
-    Awake() é a primeira função rodada ao carregar, seguida da OnEnable();
-    OnEnable() é chamada quando um item fica ativo na cena;
-    OnDisable() é chamada quando um item se torna inativo na cena;
+    MonoBehavior - Ele tem aï¿½ï¿½o no jogo e acesso a recursos;
+    : Significa Heranï¿½a;
+    Awake() ï¿½ a primeira funï¿½ï¿½o rodada ao carregar, seguida da OnEnable();
+    OnEnable() ï¿½ chamada quando um item fica ativo na cena;
+    OnDisable() ï¿½ chamada quando um item se torna inativo na cena;
     */
 
     [Header("Layers")]
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour{
     private NavMeshAgent nav;
 
     private void Start(){
-    //Fazer instâncias, ligar referências, tudo que acontece após a base ter carregado e o objeto estar ativo.
+    //Fazer instï¿½ncias, ligar referï¿½ncias, tudo que acontece apï¿½s a base ter carregado e o objeto estar ativo.
 
         nav = GetComponent<NavMeshAgent>();
         //GetComponent<Nome>() pega um componente do objeto do qual o script faz parte.
@@ -26,8 +26,12 @@ public class PlayerMovement : MonoBehaviour{
 
     private void Update(){
         //Chamada a cada frame.
-        
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Checar onde o mouse está;
+      ManageMovement();
+    }
+
+    private void ManageMovement(){
+        if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0)){
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Checar onde o mouse estï¿½;
         Debug.DrawRay(ray.origin, ray.direction*150, Color.red);
 
         RaycastHit hit; //Para armazenar quando o ray bater em algo;
@@ -40,5 +44,9 @@ public class PlayerMovement : MonoBehaviour{
 
             }
         }
+
+       } 
+        
     }
+
 }
